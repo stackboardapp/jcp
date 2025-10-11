@@ -1,0 +1,263 @@
+
+<head>
+  <title>Personalized [User Name] Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" 
+        type="image/png" 
+        href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaf_font_awesome.svg/1024px-Leaf_font_awesome.svg.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta property="og:image" content="https://www.kbb.com/wp-content/uploads/2022/08/2022-mercedes-amg-eqs-front-left-3qtr.jpg?w=918" />
+ 
+
+
+  <script>
+ 
+
+  document.title = `Personalized Page for ${name}`;
+  document.querySelector('meta[name="description"]').content = `Welcome, ${name}! This is your personalized page.`;
+  </script>
+</head>
+
+ 
+ 
+ 
+
+
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<style>
+/* Reset CSS pour assurer un style de base cohérent */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0d0d0d; /* Fond sombre pour mettre en valeur l'effet néon */
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Conteneur toujours centré */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Carte au centre */
+.card {
+    background: #0d0d0d;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: zoomIn 0.8s ease-out forwards;
+    transform: scale(0);
+    width: 90%; /* Responsive pour s'adapter aux petits écrans */
+    max-width: 400px; /* Taille maximale pour les grands écrans */
+    min-width: 250px;
+}
+
+.card h4 {
+     font-size: 1rem;/* Taille adaptative */
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.card p {
+    font-size: 1.1rem; /* Taille adaptative */
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.redirect-buttons .button {
+    display: inline-block;
+    background: #cc0000;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1rem; /* Taille adaptative */
+}
+
+.redirect-buttons .button:hover {
+    background: #f44336;
+    transform: scale(1.1);
+}
+
+/* Effet néon */
+.neon {
+    border: 2px solid #04f7e8a;
+    box-shadow: 0 0 20px #cc0000, 0 0 40px #cc0000, 0 0 60px #cc0000;
+    color: #fff;
+}
+
+/* Animation de zoom */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive pour les très petits écrans */
+@media (max-width: 600px) {
+    .card {
+        padding: 20px;
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+    .redirect-buttons .button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+
+
+</style>
+
+
+<div class="container">
+        <div class="card neon">
+            <h5><i class="fa fa-"></i> Nice! Finally you got something...</h5>
+          <br>
+            <h3>You got a free gift!</h3>
+            <br>
+            <h5 id="nameDisplay"> </h5><p>has sent you a $100 gift card for (Johnson Painting Company and more)</p>
+          
+            <div class="redirect-buttons">
+                <a href="https://app.stackboard.one/app/form" class="button">Accept</a>
+                
+            </div>
+        </div>
+    </div>
+    <canvas id="confetti"></canvas>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const confettiCanvas = document.getElementById("confetti");
+    const ctx = confettiCanvas.getContext("2d");
+
+    // Configuration du canvas pour occuper tout l'écran
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+
+    // Paramètres des confettis
+    const confettis = [];
+    const colors = ["#FF007A", "#7A00FF", "#00FF7A", "#FFD700", "#00D4FF"];
+
+    // Fonction pour générer un confetti
+    function createConfetti() {
+        const confetti = {
+            x: Math.random() * confettiCanvas.width,
+            y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+            size: Math.random() * 10 + 5,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            speedX: Math.random() * 3 - 1.5,
+            speedY: Math.random() * 5 + 2,
+            rotation: Math.random() * 360
+        };
+        confettis.push(confetti);
+    }
+
+    // Générer des confettis une fois
+    for (let i = 0; i < 200; i++) {
+        createConfetti();
+    }
+
+    // Fonction pour animer les confettis
+    function animateConfetti() {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confettis.forEach((confetti, index) => {
+            confetti.x += confetti.speedX;
+            confetti.y += confetti.speedY;
+            confetti.rotation += confetti.speedX;
+
+            // Dessiner le confetti
+            ctx.save();
+            ctx.translate(confetti.x, confetti.y);
+            ctx.rotate((confetti.rotation * Math.PI) / 180);
+            ctx.fillStyle = confetti.color;
+            ctx.fillRect(-confetti.size / 2, -confetti.size / 2, confetti.size, confetti.size);
+            ctx.restore();
+
+            // Supprimer les confettis qui sortent de l'écran
+            if (confetti.y > confettiCanvas.height) {
+                confettis.splice(index, 1);
+            }
+        });
+
+        if (confettis.length > 0) {
+            requestAnimationFrame(animateConfetti);
+        }
+    }
+
+    // Lancer l'animation après 800ms (fin du zoom)
+    setTimeout(() => {
+        animateConfetti();
+    }, 800);
+});
+
+    
+    
+    </script>
+    
+     <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+
+    // Check if name exists in URL parameters
+    if (name) {
+      document.getElementById('nameDisplay').textContent = `${name}`;
+    } else {
+      // Display default message if name is absent
+      document.getElementById('nameDisplay').textContent = "A friend";
+    }
+  </script>
+     
