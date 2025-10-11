@@ -407,12 +407,12 @@ body {
         // Update meta tags dynamically
         function updateMetaTags() {
             // Update page title
-            document.title = `${displayName}, you got a $100 GIFT CARD!`;
+            document.title = `${displayName}, sent you got a $100 GIFT CARD!`;
             
             // Update meta description
             let metaDescription = document.querySelector('meta[name="description"]');
             if (metaDescription) {
-                metaDescription.content = `${displayName}, claim your $100 gift card from Johnson Painting Company and more!`;
+                metaDescription.content = `${displayName} sent you a gift, claim your $100 gift card!`;
             }
             
             // Update Open Graph meta tags
@@ -420,10 +420,10 @@ body {
             let ogDescription = document.querySelector('meta[property="og:description"]');
             
             if (ogTitle) {
-                ogTitle.content = `${displayName}, you got a $100 GIFT CARD!`;
+                ogTitle.content = `${displayName} has sent you got a $100 GIFT CARD!`;
             }
             if (ogDescription) {
-                ogDescription.content = `${displayName}, claim your $100 gift card from Johnson Painting Company and more!`;
+                ogDescription.content = `${displayName} has sent you a gift, claim your $100 gift card!`;
             }
             
             // Update meta info display
