@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You got a $100 GIFT CARD!</title>
+    <meta name="description" content="Claim your $100 gift card from Johnson Painting Company">
+    <meta name="author" content="Johnson Painting Company">
+    <meta property="og:image" content="https://jpc.today/pic/Johnson%20Painting%20Company%20Gift%20Voucher%20Gift%20Certificate.png">
+    <meta property="og:title" content="You got a $100 GIFT CARD!">
+    <meta property="og:description" content="Claim your $100 gift card from Johnson Painting Company">
+    <meta property="og:url" content="https://example.com/gift-card">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="https://jpc.today/pic/Johnson%20Painting%20Company%20Gift%20Voucher%20Gift%20Certificate.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+    
+    
+
+/* Conteneur toujours centré */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  margin: 40px auto; 
+}
+
+       body {
+         
+    height: auto; /* Change from 100vh to auto */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    padding: 60px 0; /* Add space at top and bottom */
+    overflow-y: auto; /* Make body scrollable */
+    justify-content: center; /* Change from center to flex-start */
+    align-items: flex-start; /* Change from center to flex-start */
+         background: #0d0d0d; /* Fond sombre pour mettre en valeur l'effet néon */
+}
+
+
+
+
+        .card {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: zoomIn 0.8s ease-out forwards;
+            transform: scale(0);
+            width: 90%;
+            max-width: 450px;
+            min-width: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff007a, #7a00ff, #00ff7a, #ffd700, #00d4ff);
+            z-index: -1;
+            border-radius: 16px;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #0d0d0d;
+            border-radius: 15px;
+            z-index: -1;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ddd;
+            line-height: 1.5;
+        }
+
+        .gift-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            margin: 15px 0;
+        }
+
+        .redirect-buttons .button {
+            display: inline-block;
+            background: linear-gradient(45deg, #cc0000, #ff3333);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .redirect-buttons .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .redirect-buttons .button:hover::before {
+            left: 100%;
+        }
+
+        .redirect-buttons .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
+        }
+
+        .redirect-buttons .button:active {
+            transform: translateY(1px);
+        }
+
+        .company-logo {
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+
+        .gift-icon {
+            font-size: 3rem;
+            color: #ffd700;
+            margin: 15px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes borderGlow {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+            }
+
+            .card h3 {
+                font-size: 1.5rem;
+            }
+
+            .card p {
+                font-size: 1rem;
+            }
+
+            .redirect-buttons .button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            
+            .gift-value {
+                font-size: 2rem;
+            }
+        }
+        
+        .meta-info {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #aaa;
+            max-width: 300px;
+            display: none;
+        }
+        
+        .meta-toggle {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+      
+      
+      /* Reset CSS pour assurer un style de base cohérent */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* Carte au centre */
+.card {
+    background: #0d0d0d;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: zoomIn 0.8s ease-out forwards;
+    transform: scale(0);
+    width: 90%; /* Responsive pour s'adapter aux petits écrans */
+    max-width: 400px; /* Taille maximale pour les grands écrans */
+    min-width: 250px;
+}
+
+.card h4 {
+     font-size: 1rem;/* Taille adaptative */
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.card p {
+    font-size: 1.1rem; /* Taille adaptative */
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.redirect-buttons .button {
+    display: inline-block;
+    background: #cc0000;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1rem; /* Taille adaptative */
+}
+
+.redirect-buttons .button:hover {
+    background: #f44336;
+    transform: scale(1.1);
+}
+
+/* Effet néon */
+.neon {
+    border: 2px solid #04f7e8a;
+    box-shadow: 0 0 20px #cc0000, 0 0 40px #cc0000, 0 0 60px #cc0000;
+    color: #fff;
+}
+
+/* Animation de zoom */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive pour les très petits écrans */
+@media (max-width: 600px) {
+    .card {
+        padding: 20px;
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+    .redirect-buttons .button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card neon">
+            <div class="company-logo">
+                <img src="https://jpc.today/pic/johnson-painting-newest-vermelho%20(1).png" alt="Johnson Painting Company" width="200" height="125">
+            </div>
+            <div class="gift-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h3>You got a free gift!</h3>
+            <div class="gift-value">$100</div>
+            <h3 id="nameDisplay"></h3>
+            <p>has sent you a $100 gift card for Johnson Painting Company and more!</p>
+            <div class="redirect-buttons">
+                <a href="https://go.jpc.today/accept" class="button">Accept Your Gift</a>
+            </div>
+        </div>
+    </div>
+    
+    <canvas id="confetti"></canvas>
+    
+    <div class="meta-info" id="metaInfo">
+        <strong>Current Meta Tags:</strong><br>
+        Title: <span id="metaTitle"></span><br>
+        Description: <span id="metaDescription"></span>
+    </div>
+    
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Get name from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const displayName = name || "A friend";
+        
+        // Update page content
+        document.getElementById('nameDisplay').textContent = displayName;
+        
+        // Update meta tags dynamically
+        function updateMetaTags() {
+            // Update page title
+            document.title = `${displayName}, sent you got a $100 GIFT CARD!`;
+            
+            // Update meta description
+            let metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.content = `${displayName} sent you a gift, claim your $100 gift card!`;
+            }
+            
+            // Update Open Graph meta tags
+            let ogTitle = document.querySelector('meta[property="og:title"]');
+            let ogDescription = document.querySelector('meta[property="og:description"]');
+            
+            if (ogTitle) {
+                ogTitle.content = `${displayName} has sent you got a $100 GIFT CARD!`;
+            }
+            if (ogDescription) {
+                ogDescription.content = `${displayName} has sent you a gift, claim your $100 gift card!`;
+            }
+            
+            // Update meta info display
+            document.getElementById('metaTitle').textContent = document.title;
+            document.getElementById('metaDescription').textContent = metaDescription ? metaDescription.content : 'Not found';
+        }
+        
+        // Toggle meta info display
+        function toggleMetaInfo() {
+            const metaInfo = document.getElementById('metaInfo');
+            metaInfo.style.display = metaInfo.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Initialize meta tags
+        updateMetaTags();
+        
+        // Confetti animation
+        document.addEventListener("DOMContentLoaded", () => {
+            const confettiCanvas = document.getElementById("confetti");
+            const ctx = confettiCanvas.getContext("2d");
+
+            // Set canvas to full window size
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+
+            // Confetti parameters
+            const confettis = [];
+            const colors = ["#FF007A", "#7A00FF", "#00FF7A", "#FFD700", "#00D4FF"];
+
+            // Create confetti
+            function createConfetti() {
+                const confetti = {
+                    x: Math.random() * confettiCanvas.width,
+                    y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+                    size: Math.random() * 10 + 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speedX: Math.random() * 3 - 1.5,
+                    speedY: Math.random() * 5 + 2,
+                    rotation: Math.random() * 360
+                };
+                confettis.push(confetti);
+            }
+
+            // Generate confetti
+            for (let i = 0; i < 200; i++) {
+                createConfetti();
+            }
+
+            // Animate confetti
+            function animateConfetti() {
+                ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                confettis.forEach((confetti, index) => {
+                    confetti.x += confetti.speedX;
+                    confetti.y += confetti.speedY;
+                    confetti.rotation += confetti.speedX;
+
+                    // Draw confetti
+                    ctx.save();
+                    ctx.translate(confetti.x, confetti.y);
+                    ctx.rotate((confetti.rotation * Math.PI) / 180);
+                    ctx.fillStyle = confetti.color;
+                    ctx.fillRect(-confetti.size / 2, -confetti.size / 2, confetti.size, confetti.size);
+                    ctx.restore();
+
+                    // Remove confetti that's off screen
+                    if (confetti.y > confettiCanvas.height) {
+                        confettis.splice(index, 1);
+                    }
+                });
+
+                if (confettis.length > 0) {
+                    requestAnimationFrame(animateConfetti);
+                }
+            }
+
+            // Start animation after 800ms (end of zoom)
+            setTimeout(() => {
+                animateConfetti();
+            }, 800);
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const confettiCanvas = document.getElementById("confetti");
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
