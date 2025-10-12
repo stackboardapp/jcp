@@ -1,0 +1,360 @@
+ :root {
+      --primary: #f44336;
+      --primary-light: #4895ef;
+      --secondary: #3f37c9;
+      --success: #f44336;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --border-radius: 8px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fb;
+      color: var(--dark);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      position: relative;
+    }
+
+    h1, h2, h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: var(--border-radius);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    button:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    #generate-button {
+      background-color: var(--success);
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    #generate-button:hover {
+      background-color: #3aa8d8;
+    }
+
+    .section {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .share-button {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    #sms-button {
+      background-color: #20c997;
+    }
+
+    #mailto-button {
+      background-color: #6f42c1;
+    }
+
+    #whatsapp-button {
+      background-color: #25d366;
+    }
+
+    #facebook-button {
+      background-color: #1877f2;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      background-color: var(--light);
+    }
+
+    #stats-button {
+      background-color: var(--gray);
+      margin-top: 10px;
+    }
+
+    #stats-button:hover {
+      background-color: #5a6268;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .friend-group {
+      position: relative;
+    }
+
+    .remove-friend {
+      position: absolute;
+      right: 10px;
+      top: 40px;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .remove-friend:hover {
+      color: #dc3545;
+      background: none;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .add-friend {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px dashed var(--primary);
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .add-friend:hover {
+      background-color: rgba(67, 97, 238, 0.1);
+    }
+
+    .copy-container {
+      position: relative;
+      margin-top: 5px;
+    }
+
+    .copy-button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: var(--primary);
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    .copy-button:hover {
+      background-color: var(--secondary);
+    }
+
+    .copy-feedback {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: #28a745;
+      color: white;
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      animation: fadeOut 2s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    #logoutButton {
+      background-color: #dc3545;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    #logoutButton:hover {
+      background-color: #c82333;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      
+      .share-buttons {
+        flex-direction: column;
+      }
+      
+      .share-button {
+        width: 100%;
+      }
+      
+      h1 {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
+    }
+    
+    
+     
+        
+        .photo-container {
+            position: relative;
+            display: inline-block;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+        }
+        
+        .photo {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .save-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .save-button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .save-button:active {
+            transform: translateY(0);
+        }
+        
+        .save-button.saved {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .save-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .message.show {
+            opacity: 1;
+        }
+        
+        .instructions {
+            max-width: 500px;
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            line-height: 1.6;
+        }
