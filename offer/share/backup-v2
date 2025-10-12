@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Unique Link</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #f44336;
+      --primary-light: #4895ef;
+      --secondary: #3f37c9;
+      --success: #f44336;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --border-radius: 8px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fb;
+      color: var(--dark);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      position: relative;
+    }
+
+    h1, h2, h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: var(--border-radius);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    button:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    #generate-button {
+      background-color: var(--success);
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    #generate-button:hover {
+      background-color: #3aa8d8;
+    }
+
+    .section {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .share-button {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    #sms-button {
+      background-color: #20c997;
+    }
+
+    #mailto-button {
+      background-color: #6f42c1;
+    }
+
+    #whatsapp-button {
+      background-color: #25d366;
+    }
+
+    #facebook-button {
+      background-color: #1877f2;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      background-color: var(--light);
+    }
+
+    #stats-button {
+      background-color: var(--gray);
+      margin-top: 10px;
+    }
+
+    #stats-button:hover {
+      background-color: #5a6268;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .friend-group {
+      position: relative;
+    }
+
+    .remove-friend {
+      position: absolute;
+      right: 10px;
+      top: 40px;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .remove-friend:hover {
+      color: #dc3545;
+      background: none;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .add-friend {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px dashed var(--primary);
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .add-friend:hover {
+      background-color: rgba(67, 97, 238, 0.1);
+    }
+
+    .copy-container {
+      position: relative;
+      margin-top: 5px;
+    }
+
+    .copy-button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: var(--primary);
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    .copy-button:hover {
+      background-color: var(--secondary);
+    }
+
+    .copy-feedback {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: #28a745;
+      color: white;
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      animation: fadeOut 2s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    #logoutButton {
+      background-color: #dc3545;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    #logoutButton:hover {
+      background-color: #c82333;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      
+      .share-buttons {
+        flex-direction: column;
+      }
+      
+      .share-button {
+        width: 100%;
+      }
+      
+      h1 {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>
+      Nice, You saved 15%! Keep stacking the savings, Refer a friend and receive a $100 digital gift card for evey friend when they book—your friend will get one too!
+    </h3>
+    
+    <form id="share-form">
+      <div class="form-group">
+        <label for="name">Your Name (for better results, use the name your friends know you by)</label>
+        <input type="text" id="name" placeholder="Enter your name">
+      </div>
+
+      <div id="friend-emails">
+        <div class="form-group friend-group">
+          <label for="email1">Friend Email</label>
+          <input type="email" id="email1" placeholder="Enter email address">
+          <button type="button" class="remove-friend hidden">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="add-friend" id="add-friend">
+        <i class="fas fa-plus"></i> Add Another Friend
+      </button>
+
+      <button type="button" id="generate-button">
+        <i class="fas fa-eye"></i> Generate Preview
+      </button>
+    </form>
+
+    <div class="section">
+      <h2>Share Options</h2>
+      <div class="share-buttons" id="share-buttons">
+        <button id="sms-button" class="share-button hidden">
+          <i class="fas fa-comment-sms"></i> SMS
+        </button>
+        <button id="mailto-button" class="share-button hidden">
+          <i class="fas fa-envelope"></i> Email
+        </button>
+        <button id="whatsapp-button" class="share-button hidden">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </button>
+        <button id="facebook-button" class="share-button hidden">
+          <i class="fab fa-facebook"></i> Facebook
+        </button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Message Preview</h3>
+      <textarea id="message-preview" readonly placeholder="Your message preview will appear here..."></textarea>
+    </div>
+
+    <div class="section">
+      <h3>Link Only</h3>
+      <div class="copy-container">
+        <textarea id="link-only" readonly placeholder="The shareable link will appear here..."></textarea>
+        <button class="copy-button hidden" id="copy-link-button">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Stats Link</h3>
+      <div class="copy-container">
+        <textarea id="stats-link" readonly placeholder="Your stats tracking link will appear here..."></textarea>
+        <button class="copy-button hidden" id="copy-stats-button">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+      <button id="stats-button">
+        <i class="fas fa-chart-bar"></i> View Stats
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const generateButton = document.getElementById('generate-button');
+      const messagePreview = document.getElementById('message-preview');
+      const linkOnly = document.getElementById('link-only');
+      const statsLink = document.getElementById('stats-link');
+      const addFriendButton = document.getElementById('add-friend');
+      const friendEmailsContainer = document.getElementById('friend-emails');
+      const copyLinkButton = document.getElementById('copy-link-button');
+      const copyStatsButton = document.getElementById('copy-stats-button');
+      let friendCount = 1;
+
+      // Generate a unique identifier for this user session
+      function generateUserId() {
+        let userId = localStorage.getItem('userId');
+        if (!userId) {
+          userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('userId', userId);
+        }
+        return userId;
+      }
+
+      const userId = generateUserId();
+
+      // Store URLs in a predefined list
+      const urls = [
+        "https://gift.jpc.today/ref1",
+        "https://gift.jpc.today/ref2",
+        "https://gift.jpc.today/ref3",
+        "https://gift.jpc.today/ref4",
+        "https://gift.jpc.today/ref5",
+        "https://gift.jpc.today/ref6",
+        "https://gift.jpc.today/ref7",
+        "https://gift.jpc.today/ref8",
+        "https://gift.jpc.today/ref9",
+        "https://gift.jpc.today/ref10",
+          "https://gift.jpc.today/ref11",
+        "https://gift.jpc.today/ref12",
+        "https://gift.jpc.today/ref13",
+        "https://gift.jpc.today/ref14",
+        "https://gift.jpc.today/ref15",
+        "https://gift.jpc.today/ref16",
+        "https://gift.jpc.today/ref17",
+        "https://gift.jpc.today/ref18",
+        "https://gift.jpc.today/ref19",
+        "https://gift.jpc.today/ref20",
+          "https://gift.jpc.today/ref21",
+        "https://gift.jpc.today/ref22",
+        "https://gift.jpc.today/ref23",
+        "https://gift.jpc.today/ref24",
+        "https://gift.jpc.today/ref25",
+        "https://gift.jpc.today/ref26",
+        "https://gift.jpc.today/ref27",
+        "https://gift.jpc.today/ref28",
+        "https://gift.jpc.today/ref29",
+        "https://gift.jpc.today/ref30",
+          "https://gift.jpc.today/ref31",
+        "https://gift.jpc.today/ref32",
+        "https://gift.jpc.today/ref33",
+        "https://gift.jpc.today/ref34",
+        "https://gift.jpc.today/ref35",
+        "https://gift.jpc.today/ref36",
+        "https://gift.jpc.today/ref37",
+        "https://gift.jpc.today/ref38",
+        "https://gift.jpc.today/ref39",
+        "https://gift.jpc.today/ref40",
+          "https://gift.jpc.today/ref41",
+        "https://gift.jpc.today/ref42",
+        "https://gift.jpc.today/ref43",
+        "https://gift.jpc.today/ref44",
+        "https://gift.jpc.today/ref45",
+        "https://gift.jpc.today/ref46",
+        "https://gift.jpc.today/ref47",
+        "https://gift.jpc.today/ref48",
+        "https://gift.jpc.today/ref49",
+        "https://gift.jpc.today/ref50",
+          "https://gift.jpc.today/ref51",
+        "https://gift.jpc.today/ref52",
+        "https://gift.jpc.today/ref53",
+        "https://gift.jpc.today/ref54",
+        "https://gift.jpc.today/ref55",
+        "https://gift.jpc.today/ref56",
+        "https://gift.jpc.today/ref57",
+        "https://gift.jpc.today/ref58",
+        "https://gift.jpc.today/ref59",
+        "https://gift.jpc.today/ref60"
+      
+    
+        
+      ];
+
+      // Assign URL based on user ID (store the URL once assigned)
+      function assignUrl() {
+        let assignedUrl = localStorage.getItem(`url_${userId}`);
+
+        if (!assignedUrl) {
+          const randomIndex = Math.floor(Math.random() * urls.length);
+          assignedUrl = urls[randomIndex];
+          localStorage.setItem(`url_${userId}`, assignedUrl);
+        }
+
+        return assignedUrl;
+      }
+
+      // Add new friend input field
+      addFriendButton.addEventListener('click', function() {
+        friendCount++;
+        const newFriendGroup = document.createElement('div');
+        newFriendGroup.className = 'form-group friend-group';
+        newFriendGroup.innerHTML = `
+          <label for="email${friendCount}">Friend ${friendCount} Email</label>
+          <input type="email" id="email${friendCount}" placeholder="Enter email address">
+          <button type="button" class="remove-friend">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        friendEmailsContainer.appendChild(newFriendGroup);
+        
+        // Add event listener to the new remove button
+        newFriendGroup.querySelector('.remove-friend').addEventListener('click', function() {
+          newFriendGroup.remove();
+        });
+      });
+
+      // Remove friend input field
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-friend')) {
+          e.target.closest('.friend-group').remove();
+        }
+      });
+
+      // Copy link functionality
+      copyLinkButton.addEventListener('click', function() {
+        linkOnly.select();
+        document.execCommand('copy');
+        
+        // Show feedback
+        const feedback = document.createElement('div');
+        feedback.className = 'copy-feedback';
+        feedback.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        linkOnly.parentNode.appendChild(feedback);
+        
+        setTimeout(() => {
+          feedback.remove();
+        }, 2000);
+      });
+
+      // Copy stats functionality
+      copyStatsButton.addEventListener('click', function() {
+        statsLink.select();
+        document.execCommand('copy');
+        
+        // Show feedback
+        const feedback = document.createElement('div');
+        feedback.className = 'copy-feedback';
+        feedback.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        statsLink.parentNode.appendChild(feedback);
+        
+        setTimeout(() => {
+          feedback.remove();
+        }, 2000);
+      });
+
+      // Generate preview button functionality
+generateButton.addEventListener('click', function() {
+  const name = document.getElementById('name').value || 'Your Friend';
+  
+  // Collect all friend emails
+  const friendEmails = [];
+  document.querySelectorAll('#friend-emails input[type="email"]').forEach(input => {
+    if (input.value.trim() !== '') {
+      friendEmails.push(input.value);
+    }
+  });
+
+  const assignedUrl = assignUrl();
+  const personalizedUrl = `${assignedUrl}?name=${encodeURIComponent(name)}&ref=${userId}`;
+  const statsUrl = `${assignedUrl}.stats?ref=${userId}`;
+
+  // Populate the message preview box
+  messagePreview.value = `Hey! This is ${name} thought you might be interested in this. It's a $100 Gift Card!\n\n${personalizedUrl}`;
+
+  // Populate the link-only box
+  linkOnly.value = personalizedUrl;
+
+  // Populate the stats link box
+  statsLink.value = statsUrl;
+
+  // Show the share buttons
+  document.querySelectorAll('.share-button').forEach(button => {
+    button.classList.remove('hidden');
+  });
+
+  // Show the copy buttons
+  copyLinkButton.classList.remove('hidden');
+  copyStatsButton.classList.remove('hidden');
+
+  // Configure the share buttons
+  document.getElementById("sms-button").onclick = () => {
+    window.location.href = `sms:?body=Hey I was thinking of you! Here is a $100 Gift Card! ${personalizedUrl}`;
+  };
+  
+  document.getElementById("mailto-button").onclick = () => {
+    const subject = encodeURIComponent("I was thinking of you!");
+    const body = encodeURIComponent(`Thought you might like this! It's a $100 Gift Card! ${personalizedUrl}`);
+    
+    // Create mailto link with recipients, subject, and body
+    let mailtoLink = `mailto:${friendEmails.join(',')}?subject=${subject}&body=${body}`;
+    
+    window.location.href = mailtoLink;
+  };
+  
+  document.getElementById("whatsapp-button").onclick = () => {
+    window.location.href = `https://wa.me/?text=I was thinking of you! Thought yo might want this $100 Gift Card! ${personalizedUrl}`;
+  };
+  
+  document.getElementById("facebook-button").onclick = () => {
+    const shareUrl = encodeURIComponent(personalizedUrl);
+    
+    // Use m.facebook.com for mobile devices
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      window.open(`https://m.facebook.com/sharer.php?u=${shareUrl}`, "_blank");
+    } else {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, "_blank");
+    }
+  };
+});
+
+      // Stats button functionality
+      document.getElementById("stats-button").addEventListener("click", () => {
+        const assignedUrl = assignUrl();
+        window.location.href = `${assignedUrl}.stats?ref=${userId}`;
+      });
+    });
+  </script>
+</body>
+</html>
