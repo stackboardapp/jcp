@@ -24,29 +24,35 @@
             padding: 0;
             box-sizing: border-box;
         }
+      
+    
+    
 
-        body { 
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #0d0d0d;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
-            color: #fff;
-        }
+/* Conteneur toujours centré */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  margin: 40px auto; 
+}
 
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
+       body {
+         
+    height: auto; /* Change from 100vh to auto */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    padding: 60px 0; /* Add space at top and bottom */
+    overflow-y: auto; /* Make body scrollable */
+    justify-content: center; /* Change from center to flex-start */
+    align-items: flex-start; /* Change from center to flex-start */
+         background: #0d0d0d; /* Fond sombre pour mettre en valeur l'effet néon */
+}
+
+
+
 
         .card {
             background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
@@ -259,27 +265,7 @@
     box-sizing: border-box;
 }
 
-body { 
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #0d0d0d; /* Fond sombre pour mettre en valeur l'effet néon */
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-}
 
-/* Conteneur toujours centré */
-.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* Carte au centre */
 .card {
@@ -376,19 +362,19 @@ body {
             <h4 id="nameDisplay"></h4>
             <p>has sent you a $100 gift card for Johnson Painting Company and more!</p>
             <div class="redirect-buttons">
-                <a href="/gift/claim" class="button">Accept Your Gift</a>
+                <a href="https://app.stackboard.one/app/form" class="button">Accept Your Gift</a>
             </div>
         </div>
     </div>
     
     <canvas id="confetti"></canvas>
     
-    <button class="meta-toggle" onclick="toggleMetaInfo()">Show Meta Info</button>
     <div class="meta-info" id="metaInfo">
         <strong>Current Meta Tags:</strong><br>
         Title: <span id="metaTitle"></span><br>
         Description: <span id="metaDescription"></span>
     </div>
+    
 
     <!-- jQuery and Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
