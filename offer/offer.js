@@ -10,9 +10,9 @@
       submitted = true;
       return true;
     }
-  </script>
+
     
-    <script>
+
         // Show modal after 5 seconds with countdown
         document.addEventListener('DOMContentLoaded', function() {
             let countdownElement = document.getElementById('countdown');
